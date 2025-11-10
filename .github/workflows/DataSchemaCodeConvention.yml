@@ -1,0 +1,18 @@
+name: SQL Linter
+on:
+  push:
+    branches: main
+jobs:
+  SQLLinter:
+    # використання Docker-image із вказаною версією ОС
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code in Repository
+      # клонування репозиторія для подальшої роботи з файлами на сервері
+      # в каталозі $GITHUB_WORKSPACEЕ
+      uses: "actions/checkout@v3"
+    - name: Start SQL Linter
+      # виконнання декількох послідовних команд shell-інтерпретатором
+      run: |
+        pip install sqlfluff
+        sqlfluff lint $GITHUB_WORKSPACE/DataSchema.sql --dialect oracle
