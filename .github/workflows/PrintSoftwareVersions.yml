@@ -22,5 +22,3 @@ jobs:
     steps:
       - name: Print PostgreSQL Version
         run: psql --version
-      - name: Print MinIO Client Version
-        run: mc --version
