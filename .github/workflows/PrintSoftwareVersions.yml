@@ -15,6 +15,16 @@ jobs:
         run: mvn --version
       - name: Print C++ Compiler Version (GCC)
         run: g++ --version
+      - name: Install MinIO Client (mc)
+        run: |
+          # Завантаження останньої версії mc
+          wget https://dl.min.io/client/mc/release/linux-amd64/mc
+          # Додавання прав на виконання
+          chmod +x mc
+          # Переміщення в каталог, доступний у PATH
+          sudo mv mc /usr/local/bin/
+      - name: Print MinIO Client Version
+        run: mc --version
   PrintDBMSVersions:
     name: Database Server (AL) Versions (SQL DB)
     runs-on: ubuntu-latest
